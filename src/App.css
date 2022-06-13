@@ -1,3 +1,5 @@
+/* Mobile */
+
 html {
   height: 100%;
 }
@@ -5,7 +7,8 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  height: 100%
+  height: 100%;
+  color: white;
 }
 
 #root {
@@ -96,6 +99,87 @@ form {
   border-style: none;
   border-radius: 10pc;
 }
+
+.header {
+  height: 40px;
+  font-size: 30px;
+  padding: 5px;
+  margin: 0px;
+}
+
+/* Homepage Mobile*/
+
+.header h1{
+  position:fixed;
+  right: 2%;
+  width: 100%;
+  text-align: right;
+  margin: auto;
+  background-color: rgb(2, 14, 25);
+}
+
+.home-wrapper {
+  position: relative;
+  overflow: scroll;
+  background-color: rgb(2, 14, 25);
+  height:100%;
+  width: 100%;
+  margin: auto;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0%;
+  align-content: center;
+  background-color: rgb(2, 14, 25);
+}
+
+.nav-bar .action-button {
+  width: 90px;
+}
+
+.viewport {
+  display: block;
+}
+
+.top-article {
+  height: 80px;
+  width: 98%;
+  margin: auto;
+  text-align: center;
+  background-color: grey
+}
+
+.viewport ul {
+  margin: 4px;
+  padding: 0%
+}
+
+.article-card {
+  list-style: none;
+  margin: 4px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a .card-title {
+  
+  color: white;
+}
+
+.card-body {
+  color: white;
+}
+
+
 
 /* Desktop */
 
@@ -207,6 +291,105 @@ form {
     background-color: rgb(222, 228, 51);
     border-style: none;
     border-radius: 10pc;
+    color: black;
+  }
+
+  /* Homepage Desktop*/
+
+  .header {
+    height: 100px;
+    font-size: 60px;
+    padding: 5px;
+    margin: 0px;
+
+  }
+  
+  .header h1{
+    position:fixed;
+    right: 2%;
+    width: 100%;
+    text-align: right;
+    background-color: rgb(2, 14, 25);
+  }
+  
+  .home-wrapper {
+    position: relative;
+    overflow: scroll;
+    background-color: rgb(2, 14, 25);
+    height:100%;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .nav-bar {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0%;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(2, 14, 25);
+  }
+  
+  .nav-bar .action-button {
+    width: 90px;
+  }
+
+  .nav-bar .button-spacer {
+    width: 15%;
+  }
+  
+  .viewport {
+    display: flex;
+  }
+  
+  .top-article {
+    height: 90pc;
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    background-color: grey;
+    position: fixed;
+  }
+  
+  .viewport ul {
+    margin-top: 0;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    position:fixed;
+    right: 4px;
+  }
+
+  .viewport li {
+    margin-top: 0
+  }
+  
+  .article-card {
+    list-style: none;
+    margin: 4px;
+    height: 240px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a .card-title {
+    
+    color: white;
+  }
+  
+  .card-body {
+    color: white;
   }
 
 }
