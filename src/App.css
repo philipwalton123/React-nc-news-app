@@ -353,7 +353,7 @@ a .card-title {
     margin: auto;
     text-align: center;
     background-color: grey;
-    position: fixed;
+    border-radius: 5px;
   }
   
   .viewport ul {
@@ -365,8 +365,6 @@ a .card-title {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    position:fixed;
-    right: 4px;
   }
 
   .viewport li {
@@ -377,6 +375,7 @@ a .card-title {
     list-style: none;
     margin: 4px;
     height: 240px;
+    border-radius: 10px;
   }
   
   a {
