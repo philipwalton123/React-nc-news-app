@@ -18,7 +18,11 @@ async function getArticlesByTopic(topic) {
 }
 
 async function incrementVotes(article_id) {
-    return axios.patch(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`)
+    return axios.patch(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`, {inc_votes: 1})
+    .then(({data: {article}}) => {
+        console.log('patch request returning', article)
+        return article
+    })
 }
 
-export {getAllArticles, getAllTopics, getArticleById, getArticlesByTopic}
+export {getAllArticles, getAllTopics, getArticleById, getArticlesByTopic, incrementVotes}
