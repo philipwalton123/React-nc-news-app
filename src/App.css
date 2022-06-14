@@ -17,6 +17,7 @@ body {
 
 .App {
   height: 100%;
+  background-color: rgb(2, 14, 25);
 }
 
 .banner {
@@ -144,6 +145,10 @@ form {
   width: 90px;
 }
 
+.nav-bar .button-spacer {
+  width: 15%;
+}
+
 .viewport {
   display: block;
 }
@@ -175,6 +180,10 @@ a .card-title {
   color: white;
 }
 
+a h1 {
+  color: white;
+}
+
 .card-body {
   color: white;
 }
@@ -192,6 +201,56 @@ a .card-title {
   border: none;;
   width: 95%;
   margin: auto;
+}
+
+#placeholder {
+  color: white;
+}
+
+.article-section {
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-window {
+  
+  display: grid;
+  grid-template-areas: 'article-image article-addons' 'article-text article-text';
+  grid-template-columns: 50% auto;
+  grid-template-rows: 220px auto;
+  
+}
+
+.article-image {
+  grid-area: article-image;
+  background-color: aquamarine;
+}
+
+.article-addons {
+  margin-left: 4px;
+  grid-area: article-addons;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-text {
+  grid-area: article-text;
+}
+
+.author-pic {
+  width: 50px;
+  max-height: auto;
+
+}
+
+.avatar {
+  max-width: 100%;;
+}
+
+.inc_vote {
+  max-width: 50px;
+  max-height: auto;
 }
 
 /* Desktop */
@@ -418,6 +477,59 @@ a .card-title {
     border: none;;
     width: 95%;
     margin: auto;
+  }
+
+  .article-section {
+    margin: 4px;
+    width: 75%;
+    margin: auto;
+    margin-top: 10%
+  }
+
+  .article-window {
+    overflow:auto;
+    display: grid;
+    grid-template-areas: 'article-image article-text article-addons';
+    grid-template-columns: 25% 50% auto;
+    grid-template-rows: auto;
+    
+  }
+  
+  .article-image {
+    grid-area: article-image;
+
+  }
+  
+  .article-addons {
+    margin-left: 4px;
+    grid-area: article-addons;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .article-text {
+    grid-area: article-text;
+    width: 98%;
+    margin:auto;
+  }
+
+  .article-text h3 {
+    margin-top: 0;
+  }
+  
+  .author-pic {
+    width: 50px;
+    max-height: auto;
+  
+  }
+  
+  .avatar {
+    max-width: 100%;;
+  }
+  
+  .inc_vote {
+    max-width: 50px;
+    max-height: auto;
   }
 
 }
