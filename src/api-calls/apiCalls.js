@@ -25,4 +25,9 @@ async function incrementVotes(article_id) {
     })
 }
 
-export {getAllArticles, getAllTopics, getArticleById, getArticlesByTopic, incrementVotes}
+async function getAllUsers() {
+    return axios.get('https://nc-news-phil-w.herokuapp.com/api/users')
+    .then(({data: {users}}) => users)
+}
+
+export {getAllArticles, getAllTopics, getArticleById, getArticlesByTopic, incrementVotes, getAllUsers}
