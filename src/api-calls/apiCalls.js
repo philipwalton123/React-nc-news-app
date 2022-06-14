@@ -7,14 +7,18 @@ async function getAllTopics() {
     return axios.get('https://nc-news-phil-w.herokuapp.com/api/topics')
 }
 
-async function getArticleById(id) {
-    return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${id}`)
+async function getArticleById(article_id) {
+    return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`)
 }
 
 async function getArticlesByTopic(topic) {
     return axios
     .get(`https://nc-news-phil-w.herokuapp.com/api/articles?topic=${topic}`)
     .then(({data:{articles}}) => articles)
+}
+
+async function incrementVotes(article_id) {
+    return axios.patch(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`)
 }
 
 export {getAllArticles, getAllTopics, getArticleById, getArticlesByTopic}
