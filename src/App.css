@@ -179,7 +179,20 @@ a .card-title {
   color: white;
 }
 
+.options-bar {
+  border-radius: 10pc;
+  margin: 4px;
+  background-color: rgb(222, 228, 51);
+  height:40px;
+  display: flex;
+}
 
+.sort-by-menu {
+  background-color: rgb(222, 228, 51);
+  border: none;;
+  width: 95%;
+  margin: auto;
+}
 
 /* Desktop */
 
@@ -349,7 +362,6 @@ a .card-title {
   
   .top-article {
     height: 90pc;
-    width: 20%;
     margin: auto;
     text-align: center;
     background-color: grey;
@@ -361,14 +373,16 @@ a .card-title {
     margin-left: 4px;
     margin-right: 4px;
     padding: 0%;
-    width: 80%;
+    width: 99%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
   }
 
   .viewport li {
-    margin-top: 0
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
   }
   
   .article-card {
@@ -389,6 +403,21 @@ a .card-title {
   
   .card-body {
     color: white;
+  }
+
+  .options-bar {
+    border-radius: 10pc;
+    margin: 4px;
+    background-color: rgb(222, 228, 51);
+    height:40px;
+    display: flex;
+  }
+  
+  .sort-by-menu {
+    background-color: rgb(222, 228, 51);
+    border: none;;
+    width: 95%;
+    margin: auto;
   }
 
 }

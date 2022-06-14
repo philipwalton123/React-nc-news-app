@@ -16,11 +16,13 @@ export default function Articles() {
             setArticlesShowing(articles)
             setIsLoading(false)
         })
-    }, [query])
+    }, [])
+
+    console.log('articles rendering')
 
     return isLoading ? <h3>... loading</h3>
-    : <>
-    <OptionsBar articlesShowing={articlesShowing} setArticlesShowing={setArticlesShowing}/>
+    : <section className="articles-viewer">
+    <OptionsBar setArticlesShowing={setArticlesShowing}/>
     <ul>
         {articlesShowing.map(article => {
             const background = {"backgroundColor": `${colourChooser(article.article_id)}`}
@@ -34,5 +36,5 @@ export default function Articles() {
             )
         })}
     </ul>
-    </>
+    </section>
 }
