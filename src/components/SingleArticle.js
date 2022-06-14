@@ -4,6 +4,7 @@ import axios from 'axios'
 import Header from "./Header"
 import NavBar from "./NavBar"
 import ArticleSection from "./ArticleSection"
+import { getArticleById } from "../api-calls/apiCalls"
 
 export default function SingleArticle() {
     const splat = useParams()['*']
@@ -12,7 +13,7 @@ export default function SingleArticle() {
     const [isLoading, setIsloading] = useState(true)
 
     useEffect(()=> {
-        axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${splat}`)
+        getArticleById(splat)
         .then(({data:{article}}) => {
             setThisArticle(article)
         })
