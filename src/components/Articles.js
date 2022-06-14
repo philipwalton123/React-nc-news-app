@@ -2,6 +2,7 @@ import axios from 'axios'
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import colourChooser from '../utils/colour-chooser'
+import OptionsBar from './OptionsBar'
 
 export default function Articles() {
     
@@ -16,14 +17,13 @@ export default function Articles() {
             setIsLoading(false)
         })
     }, [query])
-    
-    console.log(articlesShowing)
 
     return isLoading ? <h3>... loading</h3>
-    : <ul>
+    : <>
+    <OptionsBar articlesShowing={articlesShowing} setArticlesShowing={setArticlesShowing}/>
+    <ul>
         {articlesShowing.map(article => {
             const background = {"backgroundColor": `${colourChooser(article.article_id)}`}
-            console.log(background)
             return (
                 <li className="article-card" style={background} key={article.article_id}>
                     <Link to={`/articles/${article.article_id}`}>
@@ -34,4 +34,5 @@ export default function Articles() {
             )
         })}
     </ul>
+    </>
 }
