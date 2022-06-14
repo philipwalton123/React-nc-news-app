@@ -224,7 +224,7 @@ a h1 {
 
 .article-image {
   grid-area: article-image;
-  background-color: aquamarine;
+  border-radius: 5%;
 }
 
 .article-addons {
@@ -393,6 +393,7 @@ a h1 {
     margin: auto;
   }
   
+
   .nav-bar {
     display: flex;
     flex-direction: row;

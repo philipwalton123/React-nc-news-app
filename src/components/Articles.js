@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import {getAllArticles} from '../api-calls/apiCalls'
 import colourChooser from '../utils/colour-chooser'
 import OptionsBar from './OptionsBar'
 
@@ -11,7 +12,7 @@ export default function Articles() {
     const [query, setQuery] = useState("")
 
     useEffect(()=> {
-        axios.get('https://nc-news-phil-w.herokuapp.com/api/articles')
+        getAllArticles()
         .then(({data: {articles}}) => {
             setArticlesShowing(articles)
             setIsLoading(false)
