@@ -1,17 +1,41 @@
 
-import { useState } from 'react'
-import { incrementVotes } from "../api-calls/apiCalls"
+import { useContext, useEffect, useState } from 'react'
+import { decrementVotes, deleteUsersVoteOnArticle, getAllVotes, incrementVotes, postUsersVoteOnArticle } from "../api-calls/apiCalls"
+import { LoggedInUserContext } from '../contexts/LoggedInUser'
 import colourChooser from "../utils/colour-chooser"
 
 export default function ArticleSection({article}) {
+
+    const { loggedInUser } = useContext(LoggedInUserContext)
+    console.log(loggedInUser.username, "<<logged in")
+
     const background = {"backgroundColor": `${colourChooser(article.article_id)}`}
 
+    const [allVotes, setAllVotes] = useState([])
+
     const [voted, setVoted] = useState(false)
+
+    useEffect(()=>{
+        getAllVotes().then(votes => {
+            setVoted(votes.some(vote => {return vote.article === article.article_id && vote.voter === loggedInUser.username}))
+        })
+    },[article, postUsersVoteOnArticle, deleteUsersVoteOnArticle])
+
+    console.log(voted, '<<<voted')
 
     function handleVoteClick() {
         if (!voted){
             setVoted(true)
             incrementVotes(article.article_id)
+            if (loggedInUser.username != 'guest') {
+                postUsersVoteOnArticle(article.article_id, loggedInUser.username)
+            }
+        } else {
+            setVoted(false)
+            decrementVotes(article.article_id)
+            if (loggedInUser.username != 'guest') {
+                deleteUsersVoteOnArticle(article.article_id, loggedInUser.username)
+            }
         }
         
     }
