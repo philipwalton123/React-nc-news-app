@@ -20,7 +20,6 @@ async function getArticlesByTopic(topic) {
 async function incrementVotes(article_id) {
     return axios.patch(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`, {inc_votes: 1})
     .then(({data: {article}}) => {
-        console.log('patch request returning', article)
         return article
     })
 }
@@ -28,7 +27,6 @@ async function incrementVotes(article_id) {
 async function decrementVotes(article_id) {
     return axios.patch(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`, {inc_votes: -1})
     .then(({data: {article}}) => {
-        console.log('patch request returning', article)
         return article
     })
 }
@@ -48,15 +46,12 @@ async function getAllVotes() {
 async function postUsersVoteOnArticle(article, voter) {
     return axios.post('https://nc-news-phil-w.herokuapp.com/api/votes', {article: article, voter: voter})
     .then(response => {
-        console.log(response.data)
     })
 }
 
 async function deleteUsersVoteOnArticle(article, voter) {
-    console.log(`deleting vote on article ${article} by voter ${voter}`)
-    return axios.delete('https://nc-news-phil-w.herokuapp.com/api/votes', {article: article, voter: voter})
+    return axios.delete('https://nc-news-phil-w.herokuapp.com/api/votes', {data: {article: article, voter: voter}})
     .then(response => {
-        console.log(response.data)
     })
 }
 
