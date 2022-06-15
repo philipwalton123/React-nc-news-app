@@ -59,6 +59,10 @@ async function getUserByUsername(username) {
     return axios.get(`https://nc-news-phil-w.herokuapp.com/api/users/${username}`)
 }
 
+async function getCommentsByArticleId(article_id) {
+    return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
+}
+
 export {
     getAllArticles, 
     getAllTopics, 
@@ -70,5 +74,6 @@ export {
     postUsersVoteOnArticle,
     decrementVotes,
     deleteUsersVoteOnArticle,
-    getUserByUsername
+    getUserByUsername,
+    getCommentsByArticleId
 }

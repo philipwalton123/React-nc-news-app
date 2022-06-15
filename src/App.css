@@ -207,6 +207,8 @@ a h1 {
   background-color: rgb(222, 228, 51);
   height:40px;
   display: flex;
+  border-style: none;
+ 
 }
 
 .sort-by-menu {
@@ -286,6 +288,48 @@ a h1 {
 .logged-in-user {
   
 }
+
+.comments-wrapper {
+  background-color: grey;
+  height: 3em;
+  transition: height 0.5s ease-in-out;
+}
+
+.comments-wrapper:active {
+  height: 25%;
+  border-radius: 2pc;
+}
+
+.comments-wrapper--open {
+  height: 25%;
+  border-radius: 2pc;
+}
+
+.comments-bar{
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: rgb(222, 228, 51);
+  height:100%;
+  border-radius: 2pc;
+  margin: 4px;
+  word-wrap: break-word;
+  overflow: scroll;
+  border-style: none;
+}
+
+.comments-bar h3 {
+  margin-top: 3%;
+}
+
+.comments-bar ul {
+  color: black;
+}
+
+.comments-bar .action-button {
+  margin: 0;
+  font-size: 110%
+}
+
 
 /* Desktop */
 
