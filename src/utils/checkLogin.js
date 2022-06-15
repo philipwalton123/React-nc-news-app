@@ -1,15 +1,13 @@
-import {useContext} from 'react'
-import { UsersContext } from '../contexts/Users'
-
-export default function checkLogin(event, users, loginIsValid, setLoginIsValid) {
+export default function handleUserNameFieldChange(event,setUserNameField, users, setLoginIsValid) {
     event.preventDefault()
-    console.log(event.target[0].value)
-    const givenName = event.target[0].value
+    setUserNameField(event.target.value)
+    console.log(event.target.value)
+    const givenName = event.target.value
     console.log(users)
     if (users.some(user=> user.username == givenName)) {
         setLoginIsValid(true)
+        console.log('validated!')
     } else {
         setLoginIsValid(false)
     }
-    return loginIsValid
 }

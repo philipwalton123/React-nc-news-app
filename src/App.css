@@ -9,6 +9,7 @@ body {
   padding: 0px;
   height: 100%;
   color: white;
+  background-color: rgb(2, 14, 25);
 }
 
 #root {
@@ -102,21 +103,29 @@ form {
 }
 
 .header {
-  height: 40px;
+  width: 100%;
+  height: 60px;
   font-size: 30px;
   padding: 5px;
   margin: 0px;
+  display: flex;
+  position:fixed;
+  top: 0;
+  background-color: rgb(2, 14, 25);
 }
 
 /* Homepage Mobile*/
 
 .header h1{
-  position:fixed;
-  right: 2%;
+  float: right;
   width: 100%;
   text-align: right;
   margin: auto;
-  background-color: rgb(2, 14, 25);
+}
+
+.header a {
+  margin-right: 10px;
+  margin-left: auto;
 }
 
 .home-wrapper {
@@ -126,6 +135,9 @@ form {
   height:100%;
   width: 100%;
   margin: auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column
 }
 
 .nav-bar {
@@ -150,6 +162,7 @@ form {
 }
 
 .viewport {
+  margin-top: 40px;
   display: block;
 }
 
@@ -209,6 +222,7 @@ a h1 {
 
 .article-section {
   margin: 4px;
+  margin-top:70px;
   display: flex;
   flex-direction: column;
 }
@@ -240,17 +254,37 @@ a h1 {
 
 .author-pic {
   width: 50px;
-  max-height: auto;
+  height: 40px;
+  border-radius: 100%;
+}
 
+.header .author-pic {
+  width: 2.5rem;
+  
+}
+
+.header p {
+  margin: 0;
+  font-size: 1rem;
+  background-color: none;
+  text-align: center;
 }
 
 .avatar {
-  max-width: 100%;;
+  max-width: 100%;
 }
 
 .inc_vote {
   max-width: 50px;
   max-height: auto;
+}
+
+.red-border {
+  border: solid red
+}
+
+.logged-in-user {
+  
 }
 
 /* Desktop */
@@ -377,11 +411,19 @@ a h1 {
   }
   
   .header h1{
-    position:fixed;
-    right: 2%;
+    
     width: 100%;
     text-align: right;
-    background-color: rgb(2, 14, 25);
+    
+  }
+
+  .logged-in-user {
+   
+  }
+
+  .logged-in-user .author-pic {
+    width: 1.2em;
+    height: 1.2em;
   }
   
   .home-wrapper {
@@ -418,6 +460,7 @@ a h1 {
   
   .viewport {
     display: flex;
+    margin-top: 118px;
   }
   
   .top-article {
@@ -484,7 +527,7 @@ a h1 {
     margin: 4px;
     width: 75%;
     margin: auto;
-    margin-top: 10%
+    margin-top: 15%
   }
 
   .article-window {
@@ -520,7 +563,7 @@ a h1 {
   
   .author-pic {
     width: 50px;
-    max-height: auto;
+    height: auto;
   
   }
   

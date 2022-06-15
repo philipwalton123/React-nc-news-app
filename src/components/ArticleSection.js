@@ -32,8 +32,8 @@ export default function ArticleSection({article}) {
                     <img className="avatar" src="https://www.seekpng.com/png/detail/428-4287240_no-avatar-user-circle-icon-png.png" />
                 </div>
                 <h4>{article.author}</h4>
-                <input onClick={handleVoteClick} type="image" className="inc_vote" src="https://www.nicepng.com/png/detail/522-5221283_search-and-filter-blue-number-1-icon-png.png" alt="vote"/>  
-                <h4>Upvote this article</h4>
+                <input onClick={handleVoteClick} type="image" className="inc_vote" src={!voted ? "https://www.nicepng.com/png/detail/522-5221283_search-and-filter-blue-number-1-icon-png.png" : "https://i.pinimg.com/originals/18/24/35/1824357bea830387f73236953c8b3889.png"} alt="vote"/>  
+                <h4>{!voted ? 'Upvote this article' : 'UnVote this article'}</h4>
             </div>
         </div> 
     </section>
