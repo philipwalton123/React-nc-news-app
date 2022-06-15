@@ -55,6 +55,10 @@ async function deleteUsersVoteOnArticle(article, voter) {
     })
 }
 
+async function getUserByUsername(username) {
+    return axios.get(`https://nc-news-phil-w.herokuapp.com/api/users/${username}`)
+}
+
 export {
     getAllArticles, 
     getAllTopics, 
@@ -65,5 +69,6 @@ export {
     getAllVotes, 
     postUsersVoteOnArticle,
     decrementVotes,
-    deleteUsersVoteOnArticle
+    deleteUsersVoteOnArticle,
+    getUserByUsername
 }
