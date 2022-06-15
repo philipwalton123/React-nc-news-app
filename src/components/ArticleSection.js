@@ -16,8 +16,10 @@ export default function ArticleSection({article}) {
     const [voted, setVoted] = useState(false)
 
     useEffect(()=>{
-        getAllVotes().then(votes => {
+        getAllVotes().then(({votes}) => {
+            console.log(votes)
             setVoted(votes.some(vote => {return vote.article === article.article_id && vote.voter === loggedInUser.username}))
+            console.log(voted, 'voted')
         })
     },[article, postUsersVoteOnArticle, deleteUsersVoteOnArticle])
 

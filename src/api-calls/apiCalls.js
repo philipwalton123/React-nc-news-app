@@ -53,6 +53,7 @@ async function postUsersVoteOnArticle(article, voter) {
 }
 
 async function deleteUsersVoteOnArticle(article, voter) {
+    console.log(`deleting vote on article ${article} by voter ${voter}`)
     return axios.delete('https://nc-news-phil-w.herokuapp.com/api/votes', {article: article, voter: voter})
     .then(response => {
         console.log(response.data)
