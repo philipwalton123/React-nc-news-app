@@ -414,7 +414,7 @@ textarea {
   padding: 1em;
   border: groove rgb(195, 194, 194) 5px;
 }
-+
+
 /* Desktop */
 
 @media (min-width: 600px) {
