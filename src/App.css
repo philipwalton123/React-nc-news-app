@@ -294,6 +294,7 @@ a h1 {
   transition: height 0.5s ease-in-out;
   width: 100%;
   margin: auto;
+  text-align: center;
 }
 
 .comments-wrapper:active {
@@ -331,6 +332,11 @@ a h1 {
   border-style: none;
 }
 
+.comments-bar-top {
+  display: flex;
+  flex-direction: row;
+}
+
 .comments-bar h3 {
   margin-top: 3%;
 }
@@ -341,8 +347,18 @@ a h1 {
 
 .comments-bar .action-button {
   margin: 0;
-  font-size: 110%
+  font-size: 110%;
 }
+
+#reveal-comments {
+  width: 90%;
+}
+
+#write-a-comment {
+  font-size: 200%;
+  width: 10%;
+}
+
 
 .comments-bar::-webkit-scrollbar {
   width:10%;
@@ -359,6 +375,26 @@ a h1 {
 .comments-bar::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+.write-comment-wrapper {
+  background-color: grey;
+  color: white;
+  width: 80%;
+  margin: auto;
+  height:50%;
+  margin-top: 120px;
+}
+
+.write-comment-wrapper .comment-form {
+  height: 80%;
+  width: 100%;
+}
+
+.write-comment-wrapper .comment-field {
+  width: 98%;
+  margin: auto;
+  height: 100%;
+  border-radius: 1pc;
 }
 
 /* Desktop */

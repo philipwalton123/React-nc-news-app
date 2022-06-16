@@ -15,7 +15,7 @@ export default function OptionsBar({setArticlesShowing}) {
         <select onChange={(event) => {getArticlesByTopic(event.target.value).then((articles) => {setArticlesShowing(articles)})}} name="sort_by" className="sort-by-menu sort-by-menu--animated">
             <option value="">All Articles</option>
             {topics.map(topic => {
-                return <option value={topic.slug}>{topic.slug}</option>
+                return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
             })}
         </select>
     </section>

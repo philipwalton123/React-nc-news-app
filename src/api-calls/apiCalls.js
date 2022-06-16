@@ -59,8 +59,24 @@ async function getUserByUsername(username) {
     return axios.get(`https://nc-news-phil-w.herokuapp.com/api/users/${username}`)
 }
 
-async function getCommentsByArticleId(article_id) {
-    return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
+async function getCommentsByArticleId(article_id, limit, page) {
+ 
+    if(!limit && !page) {
+        return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
+    } else if (limit | page) {
+        let query = '?'
+        if (limit) query+= `limit=${limit}`
+        if (limit && page) query += `&p=${page}`
+        if (page & !limit) query += `p=$page`
+
+        return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments${query}`)
+    }
+}
+
+async function postCommentOnArticle(article_id, commenter, comment) {
+        return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`, {username: commenter, body: comment})
+        .then(response => {
+        })
 }
 
 export {
@@ -75,5 +91,6 @@ export {
     decrementVotes,
     deleteUsersVoteOnArticle,
     getUserByUsername,
-    getCommentsByArticleId
+    getCommentsByArticleId,
+    postCommentOnArticle
 }
