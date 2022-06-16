@@ -17,9 +17,6 @@ export default function Login() {
     const {loggedInUser, setLoggedInUser} = useContext(LoggedInUserContext)
     const navigate = useNavigate()
 
-    console.log(loginIsValid)
-    console.log(loggedInUser)
-
     useEffect(()=>{
         getAllUsers().then(users => {
             setUsers(users)
@@ -48,7 +45,7 @@ export default function Login() {
         <form value={userNameField} onSubmit={handleLoginSubmit}>
             <div className="input-area">
                 <input type="text" className={`input-field ${failedLoginAttempt ? 'red-border' : ''}`} value={userNameField} placeholder='username' onChange={(event)=>{handleUserNameFieldChange(event,setUserNameField, users, setLoginIsValid)}}></input>
-                <input type="text" className="input-field" value="password"></input>
+                <input type="text" className="input-field" value="password" onChange={()=>{}}></input>
             </div>
             <div className="login-buttons">
                 {/* <Link to="/home"> */}

@@ -16,38 +16,39 @@ export default function ArticleSection({article}) {
     const [articleAuthor, setArticleAuthor]= useState({})
 
     useEffect(()=>{
-        getAllVotes()
-        .then(({votes}) => {
+            getAllVotes()
+            .then(({votes}) => {
             setVoted(votes.some(vote => {return vote.article === article.article_id && vote.voter === loggedInUser.username}))
             setIsLoading(false)
             setVotesShowing(article.votes)
-        })
-        .then(()=>{
+            })
+            .then(()=>{
             getUserByUsername(article.author)
             .then(({data: {user}}) => {
                 setArticleAuthor(user)
             })
         })
+        
+        
     },[article, postUsersVoteOnArticle, deleteUsersVoteOnArticle, loggedInUser.username])
 
 
     function handleVoteClick() {
-        if (!voted){
-            setVoted(!voted)
-            setVotesShowing(votesShowing + 1)
-            incrementVotes(article.article_id)
-            if (loggedInUser.username !== 'guest') {
-                postUsersVoteOnArticle(article.article_id, loggedInUser.username)
+            if (!voted){
+                setVoted(!voted)
+                setVotesShowing(votesShowing + 1)
+                incrementVotes(article.article_id)
+                if (loggedInUser.username !== 'guest') {
+                    postUsersVoteOnArticle(article.article_id, loggedInUser.username)
+                }
+            } else {
+                setVoted(!voted)
+                setVotesShowing(votesShowing - 1)
+                decrementVotes(article.article_id)
+                if (loggedInUser.username !== 'guest') {
+                    deleteUsersVoteOnArticle(article.article_id, loggedInUser.username)
+                }
             }
-        } else {
-            setVoted(!voted)
-            setVotesShowing(votesShowing - 1)
-            decrementVotes(article.article_id)
-            if (loggedInUser.username !== 'guest') {
-                deleteUsersVoteOnArticle(article.article_id, loggedInUser.username)
-            }
-        }
-        
     }
     
     return <section className="article-section">

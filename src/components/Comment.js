@@ -12,7 +12,6 @@ export default function Comment() {
     const [submitted, setSubmitted] = useState(false)
     const [isError, setIsError] = useState(false)
     const {loggedInUser} = useContext(LoggedInUserContext)
-    console.log(loggedInUser)
 
     useEffect(()=> {
         getArticleById(splat)

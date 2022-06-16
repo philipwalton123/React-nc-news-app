@@ -25,10 +25,10 @@ export default function CommentsSection({comments, article_id}) {
                 {
                     comments.map(comment => {
                         return (
-                            <>
+                            <div key={comment.comment_id}>
                                 <p>{comment.body}</p>
                                 <p>{comment.author}</p>
-                            </>
+                            </div>
                             )
                     })
                   

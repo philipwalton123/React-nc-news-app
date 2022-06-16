@@ -9,7 +9,6 @@ import TopArticle from "./TopArticle";
 export default function Home() {
 
     const {loggedInUser} = useContext(LoggedInUserContext)
-    console.log(loggedInUser)
 
     return <div className="home-wrapper">
         <Header />

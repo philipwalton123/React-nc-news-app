@@ -63,8 +63,12 @@ async function getCommentsByArticleId(article_id) {
     return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
 }
 
-async function postCommentOnArticle(article_id, voter, comment) {
-    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles${article_id}/comments`, {username: voter, body: comment})
+async function postCommentOnArticle(article_id, commenter, comment) {
+    console.log('article_id', article_id)
+    console.log('commenter', commenter)
+    console.log('comment', comment)
+    
+    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`, {username: commenter, body: comment})
     .then(response => {
     })
 }

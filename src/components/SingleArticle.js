@@ -25,8 +25,6 @@ export default function SingleArticle() {
         })
     }, [splat])
 
-    console.log(theseComments)
-
     return <>
     <Header />
     <NavBar />
