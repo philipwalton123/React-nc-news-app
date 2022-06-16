@@ -85,6 +85,10 @@ async function postCommentOnArticle(article_id, commenter, comment) {
         })
 }
 
+async function deleteCommentById(comment_id) {
+    return axios.delete(`https://nc-news-phil-w.herokuapp.com/api/comments/${comment_id}`)
+}
+
 export {
     getAllArticles, 
     getAllTopics, 
@@ -99,5 +103,6 @@ export {
     getUserByUsername,
     getCommentsByArticleId,
     postCommentOnArticle,
-    getArticlesByTopicSorted
+    getArticlesByTopicSorted,
+    deleteCommentById
 }

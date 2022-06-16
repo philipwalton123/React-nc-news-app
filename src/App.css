@@ -355,6 +355,7 @@ a h1 {
 
 .comments-bar ul {
   color: black;
+  padding-left: 0;
 }
 
 .comments-bar .action-button {
@@ -366,11 +367,27 @@ a h1 {
   width: 90%;
 }
 
+.comment-card {
+  display: flex;
+}
+
+.comments-bar #flip-button {
+  width: 4em;
+  height: 2em;
+  margin: auto;
+}
+
+.comment-text {
+  padding: 0.5em;
+  background-color: rgb(255, 255, 60);;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
 #write-a-comment {
   font-size: 200%;
   width: 10%;
 }
-
 
 .comments-bar::-webkit-scrollbar {
   width:10%;
