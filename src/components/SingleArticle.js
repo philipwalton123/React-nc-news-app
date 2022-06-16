@@ -31,6 +31,6 @@ export default function SingleArticle() {
     <Header />
     <NavBar />
     <ArticleSection article={thisArticle} />
-    <CommentsSection comments={theseComments}/>
+    <CommentsSection comments={theseComments} article_id={thisArticle.article_id}/>
     </>
 }

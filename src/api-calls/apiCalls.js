@@ -63,6 +63,12 @@ async function getCommentsByArticleId(article_id) {
     return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
 }
 
+async function postCommentOnArticle(article_id, voter, comment) {
+    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles${article_id}/comments`, {username: voter, body: comment})
+    .then(response => {
+    })
+}
+
 export {
     getAllArticles, 
     getAllTopics, 
@@ -75,5 +81,6 @@ export {
     decrementVotes,
     deleteUsersVoteOnArticle,
     getUserByUsername,
-    getCommentsByArticleId
+    getCommentsByArticleId,
+    postCommentOnArticle
 }

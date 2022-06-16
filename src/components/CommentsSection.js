@@ -1,15 +1,26 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function CommentsSection({comments}) {
+export default function CommentsSection({comments, article_id}) {
     const [commentsHidden, setCommentsHidden] = useState(true)
 
-    function handleClick(){
+    const navigate = useNavigate()
+
+    function handleRevealClick(){
         setCommentsHidden(!commentsHidden)
+    }
+
+    function handleCommentClick(){
+        navigate(`/comment/${article_id}`)
     }
     
     return <section className={commentsHidden ? 'comments-wrapper' : 'comments-wrapper--open'}>
         <section className="comments-bar">
-            <button className="action-button" onClick={handleClick}>Comments</button>
+            <div className="comments-bar-top">
+               <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments</button> 
+               <button className="action-button" id='write-a-comment' onClick={handleCommentClick}>+</button>
+            </div>
+            
             <ul className="comments-list">
                 {
                     comments.map(comment => {
