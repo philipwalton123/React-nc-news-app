@@ -49,7 +49,7 @@ export default function CommentsSection({splat, article_id}) {
     return <section className={commentsHidden ? 'comments-wrapper' : 'comments-wrapper--open'}>
         <section className="comments-bar">
             <div className="comments-bar-top">
-               <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments</button> 
+               <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments {commentsHidden ? 'V' : '^'}</button> 
                <button className="action-button" id='write-a-comment' onClick={handleCommentClick}>+</button>
             </div>
             
