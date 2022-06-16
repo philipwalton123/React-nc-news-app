@@ -47,7 +47,7 @@ export default function Comment() {
         <section className="write-comment-wrapper">What would you like to say about {thisArticle.title}?
             <form className='comment-form' onSubmit={handleCommentSubmit}>
                 <input type='text' className="comment-field" value={currentText} onChange={updateText}></input>
-                <button className='action-button'>Submit</button>
+                <button type='submit' className='action-button'>Submit</button>
             </form>
             {isError ? <p>You must be <Link to='/'>logged in</Link> to submit a comment</p> : null}
         </section>
