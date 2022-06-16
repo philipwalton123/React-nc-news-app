@@ -4,7 +4,6 @@ import axios from 'axios'
 import { getAllTopics, getArticlesByTopic } from "../api-calls/apiCalls";
 
 export default function OptionsBar({setArticlesShowing}) {
-    console.log('hello')
     const [topics, setTopics] = useState([])
 
     useEffect(() => {getAllTopics()

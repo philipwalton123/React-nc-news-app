@@ -18,9 +18,7 @@ export default function Articles() {
             setIsLoading(false)
         })
     }, [])
-
-    console.log('articles rendering')
-
+    
     return isLoading ? <h3>... loading</h3>
     : <section className="articles-viewer">
     <OptionsBar setArticlesShowing={setArticlesShowing}/>
