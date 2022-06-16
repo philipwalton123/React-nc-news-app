@@ -60,8 +60,7 @@ async function getUserByUsername(username) {
 }
 
 async function getCommentsByArticleId(article_id, limit, page) {
-    console.log(limit, '<<<limit')
-    console.log(page, '<<<<<page')
+ 
     if(!limit && !page) {
         return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`)
     } else if (limit | page) {
@@ -70,25 +69,14 @@ async function getCommentsByArticleId(article_id, limit, page) {
         if (limit && page) query += `&p=${page}`
         if (page & !limit) query += `p=$page`
 
-        console.log(query, '<<< query')
-
         return axios.get(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments${query}`)
     }
-    
 }
 
 async function postCommentOnArticle(article_id, commenter, comment) {
-    console.log('article_id', article_id)
-    console.log('commenter', commenter)
-    console.log('comment', comment)
-
-    
         return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}/comments`, {username: commenter, body: comment})
         .then(response => {
-        console.log(response)
         })
-    
-    
 }
 
 export {
