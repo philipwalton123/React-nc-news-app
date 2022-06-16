@@ -27,7 +27,7 @@ export default function Comment() {
 
     function handleCommentSubmit(event) {
         event.preventDefault()
-        if (loggedInUser.username === 'guest') {
+        if (loggedInUser.username === 'guest' || event.target[0].value === '') {
             setIsError(true)
             console.log('error')
         } else {
@@ -35,7 +35,8 @@ export default function Comment() {
             setIsError(false)
             const text = event.target[0].value
             postCommentOnArticle(thisArticle.article_id, loggedInUser.username, text)
-        //setCurrentText('')
+            setCurrentText('')
+            setSubmitted(true)
         }
         
         
@@ -46,10 +47,11 @@ export default function Comment() {
         <NavBar />
         <section className="write-comment-wrapper">What would you like to say about {thisArticle.title}?
             <form className='comment-form' onSubmit={handleCommentSubmit}>
-                <input type='text' className="comment-field" value={currentText} onChange={updateText}></input>
+                <textarea type='text' className="comment-field" value={currentText} onChange={updateText}></textarea>
                 <button type='submit' className='action-button'>Submit</button>
             </form>
-            {isError ? <p>You must be <Link to='/'>logged in</Link> to submit a comment</p> : null}
+            {submitted ? <p>Success!</p> : null}
+            {isError ? <p>You must be <Link to='/'>logged in</Link> to submit a comment. Comments cannot be empty.</p> : null}
         </section>
         
     </>
