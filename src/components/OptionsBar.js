@@ -8,6 +8,7 @@ export default function OptionsBar({setArticlesShowing}) {
     const [topicChoice, setTopicChoice] = useState('')
     const [orderChoice, setOrderChoice] = useState('created_at')
     const [orderFlip, setOrderFlip] = useState(false)
+    const [page, setPage] = useState(1)
 
     useEffect(() => {getAllTopics()
     .then(({data: {topics}}) => {
@@ -56,5 +57,9 @@ export default function OptionsBar({setArticlesShowing}) {
                 <option value='author'>Sort by author</option>
             </select>
             <button className='action-button' id="flip-button" value={orderFlip} onClick={handleFlip}>flip!</button>
+            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleNext}>Next</button>
+            {page !== 1 ? 
+            <button className='action-button' id="flip-button" value={orderFlip} onClick={handlePrevious}>Previous</button> 
+            : null }
     </section>
 }
