@@ -9,9 +9,6 @@ export default function NavBar() {
     const {loggedInUser} = useContext(LoggedInUserContext)
     const {location, setLocation} = useContext(LocationContext)
 
-
-    console.log(location)
-
     return <section className="nav-bar">
         { loggedInUser.username === 'guest' ? 
         <Link to="/welcome">

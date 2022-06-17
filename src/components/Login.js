@@ -26,12 +26,10 @@ export default function Login() {
     function handleLoginSubmit(event){
         event.preventDefault()
         if (loginIsValid) {
-            console.log('validlogin')
             setFailedLoginAttempt(false)
             setLoggedInUser(users.find(user => user.username === userNameField))
             navigate('/home')
         } else {
-            console.log('invalidlogin')
             setFailedLoginAttempt(true)
         }
         

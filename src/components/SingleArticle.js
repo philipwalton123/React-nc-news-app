@@ -11,7 +11,6 @@ export default function SingleArticle() {
     const splat = useParams()['*']
     const [thisArticle, setThisArticle] = useState({})
     const [notFound, setNotFound] = useState(false)
-    console.log('>>>thisArticle', thisArticle)
 
     useEffect(()=> {
         getArticleById(splat)

@@ -30,9 +30,7 @@ export default function Comment() {
         event.preventDefault()
         if (loggedInUser.username === 'guest' || event.target[0].value === '') {
             setIsError(true)
-            console.log('error')
         } else {
-            console.log('submitting')
             setIsError(false)
             const text = event.target[0].value
             postCommentOnArticle(thisArticle.article_id, loggedInUser.username, text)

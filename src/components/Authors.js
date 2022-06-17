@@ -13,13 +13,11 @@ export default function Authors() {
     useEffect(()=> {
         getAllUsers()
         .then(users => {
-            console.log('>>>users', users)
             setAllUsers(users)
         })
         .then(()=> {
             getAllArticles()
             .then(articles => {
-                console.log('>>> All Articles', articles)
                 setAllArticles(articles)
                 setIsLoading(false)
             })
@@ -33,8 +31,6 @@ export default function Authors() {
             setAuthors(currentAuthors => [...currentAuthors, user])
         }
     })
-
-    console.log("Published Authors >>>", authors)
 
    return <>
         <Header />

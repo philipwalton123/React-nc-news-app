@@ -33,11 +33,9 @@ export default function OptionsBar({setArticlesShowing}) {
     }
 
     function handleFlip() {
-        console.log('flipped?', orderFlip)
-        
+
         getArticlesByTopicSorted(topicChoice, orderChoice, orderFlip)
         .then((articles) => {
-            console.log('returned articles')
             setArticlesShowing(articles)
         })
         setOrderFlip(current => !current)
@@ -46,7 +44,6 @@ export default function OptionsBar({setArticlesShowing}) {
     function handleNext() {
         getArticlesByTopicSortedPage(topicChoice, orderChoice, orderFlip, page + 1)
         .then((articles) => {
-            console.log('returned articles')
             if (articles.length !== 0) {
                 setArticlesShowing(articles)
                 setPage((currentPage) => currentPage + 1) 
@@ -57,7 +54,6 @@ export default function OptionsBar({setArticlesShowing}) {
     function handlePrevious() {
         getArticlesByTopicSortedPage(topicChoice, orderChoice, orderFlip, page - 1)
         .then((articles) => {
-            console.log('returned articles')
             if (articles.length !== 0) {
                 setArticlesShowing(articles)
                 setPage((currentPage) => currentPage - 1) 

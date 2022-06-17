@@ -53,7 +53,6 @@ export default function PostArticle() {
         const author = loggedInUser.username
         const topic = topicChoice
         const article = {title, body, author, topic}
-        console.log(article)
         if (author === 'guest') {
             setFailedSubmit(true)
         } else {
@@ -67,9 +66,6 @@ export default function PostArticle() {
             })
         }
     }
-
-    console.log('>>>title', currentText.title)
-    console.log('>>>body', currentText.body)
 
     return <>
         <Header />

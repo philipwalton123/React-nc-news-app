@@ -16,7 +16,6 @@ export default function TopArticle() {
         })
         .then(()=>{
             window.addEventListener('resize', (event)=> {
-                console.log(event.target.innerWidth)
                 setScreenWidth(event.target.innerWidth)
             })
         })

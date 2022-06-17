@@ -45,7 +45,6 @@ export default function CommentsSection({splat, article_id}) {
        })
     }
 
-    console.log(theseComments)
     return <section className={commentsHidden ? 'comments-wrapper' : 'comments-wrapper--open'}>
         <section className="comments-bar">
             <div className="comments-bar-top">
