@@ -10,6 +10,7 @@ import ErrorPage from './components/ErrorPage';
 import Authors from './components/Authors';
 import PostArticle from './components/PostArticle';
 import { LocationContext } from './contexts/Location';
+import NewTopic from './components/NewTopic';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home/*" element={<ErrorPage />} />
           <Route exact path="/authors" element={<Authors />} />
           <Route exact path="/post" element={<PostArticle />} />
+          <Route exact path="/newtopic" element={<NewTopic />} />
         </Routes>
       </LocationContext.Provider>
      </LoggedInUserContext.Provider>

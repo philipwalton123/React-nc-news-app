@@ -470,6 +470,32 @@ textarea {
   text-align: center;
 }
 
+.post-article-wrapper {
+  background-color: grey;
+  width: 90%;
+  margin: auto;
+  margin-top: 7em;
+  display: flex;
+}
+
+.post-article-wrapper .options-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.post-article-wrapper h1 {
+  margin-top: 0.5em;
+}
+
+#title-field {
+  height: 4em;
+}
+
+#purple {
+  color: rgb(231, 57, 231);
+}
+
 /* Desktop */
 
 @media (min-width: 600px) {
