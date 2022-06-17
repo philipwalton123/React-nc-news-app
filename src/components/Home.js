@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoggedInUserContext } from "../contexts/LoggedInUser";
 import Articles from "./Articles";
 import Header from "./Header";
@@ -7,8 +7,6 @@ import TopArticle from "./TopArticle";
 
 
 export default function Home() {
-
-    const {loggedInUser} = useContext(LoggedInUserContext)
 
     return <div className="home-wrapper">
         <Header />
