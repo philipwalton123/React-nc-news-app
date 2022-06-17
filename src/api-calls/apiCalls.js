@@ -5,7 +5,7 @@ async function getAllArticles() {
 }
 
 async function get8Articles() {
-    return axios.get('https://nc-news-phil-w.herokuapp.com/api/articles?limit=8')
+    return axios.get('https://nc-news-phil-w.herokuapp.com/api/articles?limit=9')
 }
 
 
@@ -19,13 +19,20 @@ async function getArticleById(article_id) {
 
 async function getArticlesByTopic(topic) {
     return axios
-    .get(`https://nc-news-phil-w.herokuapp.com/api/articles?limit=8&topic=${topic}`)
+    .get(`https://nc-news-phil-w.herokuapp.com/api/articles?limit=9&topic=${topic}`)
     .then(({data:{articles}}) => articles)
 }
 
+
 async function getArticlesByTopicSorted(topic, sortOption, orderFlip) {
     return axios
-    .get(`https://nc-news-phil-w.herokuapp.com/api/articles?limit=8&topic=${topic}&sort_by=${sortOption}&order=${orderFlip ? 'desc' : 'asc'}`)
+    .get(`https://nc-news-phil-w.herokuapp.com/api/articles?limit=9&topic=${topic}&sort_by=${sortOption}&order=${orderFlip ? 'desc' : 'asc'}`)
+    .then(({data:{articles}}) => articles)
+}
+
+async function getArticlesByTopicSortedPage(topic, sortOption, orderFlip, page) {
+    return axios
+    .get(`https://nc-news-phil-w.herokuapp.com/api/articles?limit=9&topic=${topic}&sort_by=${sortOption}&p=${page}&order=${orderFlip ? 'desc' : 'asc'}`)
     .then(({data:{articles}}) => articles)
 }
 
@@ -111,5 +118,6 @@ export {
     postCommentOnArticle,
     getArticlesByTopicSorted,
     deleteCommentById,
-    get8Articles
+    get8Articles,
+    getArticlesByTopicSortedPage
 }

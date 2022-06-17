@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import { getAllTopics, getArticlesByTopic, getArticlesByTopicSorted } from "../api-calls/apiCalls";
+import { getAllTopics, getArticlesByTopic, getArticlesByTopicSorted, getArticlesByTopicSortedPage } from "../api-calls/apiCalls";
 
 export default function OptionsBar({setArticlesShowing}) {
     const [topics, setTopics] = useState([])
@@ -42,6 +42,28 @@ export default function OptionsBar({setArticlesShowing}) {
         })
         setOrderFlip(current => !current)
     }
+
+    function handleNext() {
+        getArticlesByTopicSortedPage(topicChoice, orderChoice, orderFlip, page + 1)
+        .then((articles) => {
+            console.log('returned articles')
+            if (articles.length !== 0) {
+                setArticlesShowing(articles)
+                setPage((currentPage) => currentPage + 1) 
+            }
+        })
+    }
+
+    function handlePrevious() {
+        getArticlesByTopicSortedPage(topicChoice, orderChoice, orderFlip, page - 1)
+        .then((articles) => {
+            console.log('returned articles')
+            if (articles.length !== 0) {
+                setArticlesShowing(articles)
+                setPage((currentPage) => currentPage - 1) 
+            }
+        })
+    }
     
     return <section className="options-bar">
             <select id='category-chooser' onChange={handleTopicChoose} name="sort_by" className="sort-by-menu sort-by-menu--animated">
@@ -57,9 +79,9 @@ export default function OptionsBar({setArticlesShowing}) {
                 <option value='author'>Sort by author</option>
             </select>
             <button className='action-button' id="flip-button" value={orderFlip} onClick={handleFlip}>flip!</button>
-            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleNext}>Next</button>
             {page !== 1 ? 
             <button className='action-button' id="flip-button" value={orderFlip} onClick={handlePrevious}>Previous</button> 
             : null }
+            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleNext}>Next</button>
     </section>
 }

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import {get8Articles, getAllArticles} from '../api-calls/apiCalls'
 import colourChooser from '../utils/colour-chooser'
 import OptionsBar from './OptionsBar'
-import Traveller from './Traveller'
 
 export default function Articles() {
     
@@ -35,7 +34,6 @@ export default function Articles() {
                 </li>
             )
         })}
-        <Traveller setArticlesShowing={setArticlesShowing}/>
     </ul>
     </section>
 }
