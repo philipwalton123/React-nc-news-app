@@ -208,7 +208,8 @@ a h1 {
   height:40px;
   display: flex;
   border-style: none;
- 
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .sort-by-menu {
@@ -216,6 +217,17 @@ a h1 {
   border: none;;
   width: 95%;
   margin: auto;
+}
+
+#flip-button {
+  border: outset rgb(185, 183, 183);
+  margin-top: 0;
+  margin-right: 0;
+  height: 98%
+}
+
+.action-button:active {
+  filter:brightness(0.8);
 }
 
 #placeholder {
@@ -343,6 +355,7 @@ a h1 {
 
 .comments-bar ul {
   color: black;
+  padding-left: 0;
 }
 
 .comments-bar .action-button {
@@ -354,11 +367,27 @@ a h1 {
   width: 90%;
 }
 
+.comment-card {
+  display: flex;
+}
+
+.comments-bar #flip-button {
+  width: 4em;
+  height: 2em;
+  margin: auto;
+}
+
+.comment-text {
+  padding: 0.5em;
+  background-color: rgb(255, 255, 60);;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
 #write-a-comment {
   font-size: 200%;
   width: 10%;
 }
-
 
 .comments-bar::-webkit-scrollbar {
   width:10%;
@@ -377,12 +406,12 @@ a h1 {
   outline: 1px solid slategrey;
 }
 .write-comment-wrapper {
-  background-color: grey;
   color: white;
   width: 80%;
   margin: auto;
   height:50%;
   margin-top: 120px;
+  text-align: center;
 }
 
 .write-comment-wrapper .comment-form {
@@ -395,6 +424,12 @@ a h1 {
   margin: auto;
   height: 100%;
   border-radius: 1pc;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  padding: 1em;
+  border: groove rgb(195, 194, 194) 5px;
 }
 
 /* Desktop */

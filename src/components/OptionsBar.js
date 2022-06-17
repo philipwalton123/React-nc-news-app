@@ -1,22 +1,60 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import { getAllTopics, getArticlesByTopic } from "../api-calls/apiCalls";
+import { getAllTopics, getArticlesByTopic, getArticlesByTopicSorted } from "../api-calls/apiCalls";
 
 export default function OptionsBar({setArticlesShowing}) {
     const [topics, setTopics] = useState([])
+    const [topicChoice, setTopicChoice] = useState('')
+    const [orderChoice, setOrderChoice] = useState('created_at')
+    const [orderFlip, setOrderFlip] = useState(false)
 
     useEffect(() => {getAllTopics()
     .then(({data: {topics}}) => {
         setTopics(topics)
     })}, [])
+
+    function handleTopicChoose(event) {
+        getArticlesByTopic(event.target.value)
+        .then((articles) => {
+            setArticlesShowing(articles)
+            setTopicChoice(event.target.value)
+        }
+    )}
+    
+
+    function handleSort(event) {
+        setOrderChoice(event.target.value)
+        getArticlesByTopicSorted(topicChoice, event.target.value, orderFlip)
+        .then((articles) => {
+            setArticlesShowing(articles)
+        })
+    }
+
+    function handleFlip() {
+        console.log('flipped?', orderFlip)
+        
+        getArticlesByTopicSorted(topicChoice, orderChoice, orderFlip)
+        .then((articles) => {
+            console.log('returned articles')
+            setArticlesShowing(articles)
+        })
+        setOrderFlip(current => !current)
+    }
     
     return <section className="options-bar">
-        <select onChange={(event) => {getArticlesByTopic(event.target.value).then((articles) => {setArticlesShowing(articles)})}} name="sort_by" className="sort-by-menu sort-by-menu--animated">
-            <option value="">All Articles</option>
-            {topics.map(topic => {
-                return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
-            })}
-        </select>
+            <select id='category-chooser' onChange={handleTopicChoose} name="sort_by" className="sort-by-menu sort-by-menu--animated">
+                <option value="">All Articles</option>
+                {topics.map(topic => {
+                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
+                })}
+            </select>
+            <select id='article-sorter' onChange={handleSort} className='sort-by-menu'>
+                <option value='created_at'>Sort by date</option>
+                <option value='comment_count'>Sort by comments</option>
+                <option value='votes'>Sort by votes</option>
+                <option value='author'>Sort by author</option>
+            </select>
+            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleFlip}>flip!</button>
     </section>
 }

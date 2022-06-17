@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getArticleById, postCommentOnArticle } from "../api-calls/apiCalls"
 import { LoggedInUserContext } from "../contexts/LoggedInUser"
 import Header from "./Header"
@@ -12,6 +12,7 @@ export default function Comment() {
     const [submitted, setSubmitted] = useState(false)
     const [isError, setIsError] = useState(false)
     const {loggedInUser} = useContext(LoggedInUserContext)
+    const navigate = useNavigate()
 
     useEffect(()=> {
         getArticleById(splat)
@@ -37,6 +38,7 @@ export default function Comment() {
             postCommentOnArticle(thisArticle.article_id, loggedInUser.username, text)
             setCurrentText('')
             setSubmitted(true)
+            navigate(`/articles/${splat}`)
         }
         
         
