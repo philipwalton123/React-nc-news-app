@@ -12,6 +12,10 @@ body {
   background-color: rgb(2, 14, 25);
 }
 
+a {
+  color: white;
+}
+
 #root {
   height: 130%;
 }
@@ -171,7 +175,8 @@ form {
   width: 98%;
   margin: auto;
   text-align: center;
-  background-color: grey
+  background-color: grey;
+  font-size: 0.8em
 }
 
 .viewport ul {
@@ -615,11 +620,20 @@ textarea {
   }
   
   .top-article {
-    height: 90pc;
+    height: 98.5%;
     margin: auto;
+    margin-top: 4px;
     text-align: center;
     background-color: grey;
     border-radius: 5px;
+  }
+
+  .top-article h2 {
+    font-size: 3em
+  }
+
+  .top-article p {
+    font-size: 2em
   }
   
   .viewport ul {
