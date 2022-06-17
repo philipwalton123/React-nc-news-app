@@ -14,7 +14,7 @@ export default function Login() {
     const [users, setUsers] = useState([])
     const [loginIsValid, setLoginIsValid] = useState(null)
     const [failedLoginAttempt, setFailedLoginAttempt] = useState(false)
-    const {loggedInUser, setLoggedInUser} = useContext(LoggedInUserContext)
+    const { setLoggedInUser} = useContext(LoggedInUserContext)
     const navigate = useNavigate()
 
     useEffect(()=>{

@@ -19,7 +19,7 @@ export default function CommentsSection({splat, article_id}) {
                 setTheseComments(comments)
                 setRefresh(false)
             })
-    },[commentsLimit, refresh])
+    },[commentsLimit, refresh, splat])
 
     function handleRevealClick(){
         setCommentsHidden(!commentsHidden)

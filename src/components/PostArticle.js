@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllTopics, postNewArticle } from "../api-calls/apiCalls";
 import { LocationContext } from "../contexts/Location";
@@ -10,11 +10,10 @@ export default function PostArticle() {
 
     const [topics, setTopics] = useState([])
     const [currentText, setCurrentText] = useState({title: '', body: ''})
-    const [isError, setisError] = useState(false)
+    const [isError, ] = useState(false)
     const [submitted, setSubmitted] = useState(false)
     const {loggedInUser} = useContext(LoggedInUserContext)
     const [topicChoice, setTopicChoice] = useState('coding')
-    const [fieldsAreValid, setFieldsAreValid] = useState(false)
     const [failedSubmit, setFailedSubmit] = useState(false)
     const {setLocationContext} = useContext(LocationContext)
     const navigate = useNavigate()
@@ -31,7 +30,7 @@ export default function PostArticle() {
     }
 
     function updateText(event) {
-        if (event.target.id == 'title-field') {
+        if (event.target.id === 'title-field') {
             setCurrentText(currentFields => {
             const temp = {...currentFields}
             temp.title = event.target.value

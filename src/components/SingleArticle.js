@@ -3,15 +3,14 @@ import { useState, useEffect } from 'react'
 import Header from "./Header"
 import NavBar from "./NavBar"
 import ArticleSection from "./ArticleSection"
-import { getArticleById, getCommentsByArticleId, postCommentOnArticle } from "../api-calls/apiCalls"
+import { getArticleById } from "../api-calls/apiCalls"
 import CommentsSection from "./CommentsSection"
 import ErrorPage from "./ErrorPage"
 
 export default function SingleArticle() {
     const splat = useParams()['*']
     const [thisArticle, setThisArticle] = useState({})
-    const [notFound, setNotFound] = useState(false)
-
+    
     useEffect(()=> {
         getArticleById(splat)
         .then(({data:{article}}) => {
@@ -20,7 +19,7 @@ export default function SingleArticle() {
         .then(()=> {
             
         })
-    }, [splat, postCommentOnArticle])
+    }, [splat])
 
     if (Object.keys(thisArticle).length === 0){
         return <ErrorPage/>

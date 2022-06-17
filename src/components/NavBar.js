@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import {Link} from 'react-router-dom'
 import { LocationContext } from '../contexts/Location'
 import { LoggedInUserContext } from '../contexts/LoggedInUser'
@@ -19,7 +19,7 @@ export default function NavBar() {
         </Link>
         }
         <div className="button-spacer"></div>
-        { location === 'home' || location == 'post'?
+        { location === 'home' || location === 'post'?
         <Link to="/authors">
             <button className="action-button" onClick={()=>{setLocation('authors')}}>Authors</button>
         </Link> :
@@ -28,7 +28,7 @@ export default function NavBar() {
         </Link>
         }
         <div className="button-spacer"></div>
-        { location === 'home' || location == 'authors' ? 
+        { location === 'home' || location === 'authors' ? 
         <Link to="/post">
         <button className="action-button" onClick={()=>{setLocation('post')}}>Post</button>
         </Link> :

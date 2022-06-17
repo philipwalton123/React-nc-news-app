@@ -30,7 +30,7 @@ export default function ArticleSection({article}) {
         })
         
         
-    },[article, postUsersVoteOnArticle, deleteUsersVoteOnArticle, loggedInUser.username])
+    },[article, loggedInUser.username])
 
 
     function handleVoteClick() {
@@ -64,7 +64,7 @@ export default function ArticleSection({article}) {
             </div>
             <div className="article-addons">
                 <div className="author-pic">
-                    { isLoading ? null : <img className="avatar" src={articleAuthor.avatar_url} alt={article.username}/>}
+                    { isLoading ? null : <img className="author-pic" src={articleAuthor.avatar_url} alt={article.username}/>}
                 </div>
                 <h4>{articleAuthor.name}</h4>
                 <input onClick={handleVoteClick} type="image" className="inc_vote" src={!voted ? "https://www.nicepng.com/png/detail/522-5221283_search-and-filter-blue-number-1-icon-png.png" : "https://i.pinimg.com/originals/18/24/35/1824357bea830387f73236953c8b3889.png"} alt="vote"/>  

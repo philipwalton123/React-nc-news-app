@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios'
 import { getAllTopics, getArticlesByTopic, getArticlesByTopicSorted, getArticlesByTopicSortedPage } from "../api-calls/apiCalls";
 
 export default function OptionsBar({setArticlesShowing}) {

@@ -7,7 +7,7 @@ export default function Authors() {
 
     const [allUsers, setAllUsers] = useState([])
     const [allArticles, setAllArticles] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const [, setIsLoading] = useState(true)
     const [authors, setAuthors] = useState([])
 
     useEffect(()=> {
@@ -43,11 +43,11 @@ export default function Authors() {
                 if (author.username !== 'guest') {
                     return (
                         <section className="author-card">
-                            <img className="author-pic" src={author.avatar_url}></img>
+                            <img key={author.userName} className="author-pic" src={author.avatar_url} alt="auth"></img>
                             <h1 className="author-name">{author.username}</h1>
                         </section>
                     )
-                }
+                } else return null
             })
         }
         </section>

@@ -6,7 +6,7 @@ export default function TopArticle() {
 
     const [latestArticle, setLatestArticle] = useState('')
     const [isLoading, setIsLoading] = useState(true)
-    const [screenWidth, setScreenWidth] = useState(Window.innerwidth)
+    const [, setScreenWidth] = useState(Window.innerwidth)
 
     useEffect(()=>{
         getLatestArticle()
