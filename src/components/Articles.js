@@ -1,9 +1,10 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import {getAllArticles} from '../api-calls/apiCalls'
+import {get8Articles, getAllArticles} from '../api-calls/apiCalls'
 import colourChooser from '../utils/colour-chooser'
 import OptionsBar from './OptionsBar'
+import Traveller from './Traveller'
 
 export default function Articles() {
     
@@ -12,7 +13,7 @@ export default function Articles() {
     const [query, setQuery] = useState("")
 
     useEffect(()=> {
-        getAllArticles()
+        get8Articles()
         .then(({data: {articles}}) => {
             setArticlesShowing(articles)
             setIsLoading(false)
@@ -34,6 +35,7 @@ export default function Articles() {
                 </li>
             )
         })}
+        <Traveller setArticlesShowing={setArticlesShowing}/>
     </ul>
     </section>
 }
