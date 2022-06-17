@@ -496,6 +496,10 @@ textarea {
   color: rgb(231, 57, 231);
 }
 
+#write-article {
+  margin-top: 5%;
+}
+
 /* Desktop */
 
 @media (min-width: 600px) {

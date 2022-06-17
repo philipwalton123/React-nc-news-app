@@ -1,6 +1,7 @@
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllTopics, postNewArticle } from "../api-calls/apiCalls";
+import { LocationContext } from "../contexts/Location";
 import { LoggedInUserContext } from "../contexts/LoggedInUser";
 import Header from "./Header";
 import NavBar from "./NavBar";
@@ -15,7 +16,7 @@ export default function PostArticle() {
     const [topicChoice, setTopicChoice] = useState('coding')
     const [fieldsAreValid, setFieldsAreValid] = useState(false)
     const [failedSubmit, setFailedSubmit] = useState(false)
-
+    const {setLocationContext} = useContext(LocationContext)
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -62,6 +63,7 @@ export default function PostArticle() {
                 setSubmitted(true)
                 setCurrentText({title: '', body: ''})
                 navigate('/home')
+                setLocationContext('home')
             })
         }
     }
@@ -85,7 +87,7 @@ export default function PostArticle() {
                 
             </section>
         </section>
-        <section className="write-comment-wrapper">What would you like to write?
+        <section id="write-article" className="write-comment-wrapper">What would you like to write?
             <form className='comment-form' onSubmit={handleCommentSubmit}>
                 <textarea id='title-field' type='text' className="comment-field" value={currentText.title} onChange={updateText} placeholder="Title"></textarea>
                 <textarea id='body-field' type='text' className="comment-field" value={currentText.body} onChange={updateText} placeholder="Body"></textarea>
