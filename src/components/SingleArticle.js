@@ -5,12 +5,13 @@ import NavBar from "./NavBar"
 import ArticleSection from "./ArticleSection"
 import { getArticleById, getCommentsByArticleId, postCommentOnArticle } from "../api-calls/apiCalls"
 import CommentsSection from "./CommentsSection"
+import ErrorPage from "./ErrorPage"
 
 export default function SingleArticle() {
     const splat = useParams()['*']
-
     const [thisArticle, setThisArticle] = useState({})
-    
+    const [notFound, setNotFound] = useState(false)
+    console.log('>>>thisArticle', thisArticle)
 
     useEffect(()=> {
         getArticleById(splat)
@@ -22,6 +23,9 @@ export default function SingleArticle() {
         })
     }, [splat, postCommentOnArticle])
 
+    if (Object.keys(thisArticle).length === 0){
+        return <ErrorPage/>
+    } else
 
     return <>
     <Header />

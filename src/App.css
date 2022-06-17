@@ -432,6 +432,12 @@ textarea {
   border: groove rgb(195, 194, 194) 5px;
 }
 
+.error-wrapper {
+  width: 50%;
+  margin: auto;
+  margin-top: 50%;
+}
+
 /* Desktop */
 
 @media (min-width: 600px) {

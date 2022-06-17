@@ -6,6 +6,7 @@ import SingleArticle from './components/SingleArticle';
 import { useState } from 'react';
 import { LoggedInUserContext } from './contexts/LoggedInUser';
 import Comment from './components/Comment';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
 
@@ -15,10 +16,13 @@ function App() {
     <div className="App">
     <LoggedInUserContext.Provider value ={{loggedInUser, setLoggedInUser}}>
      <Routes>
-      <Route path="/" element={<Welcome />} />
-      <Route path="/home" element={<Home />} />
+      <Route exact path="/" element={<Welcome />} />
+      <Route exact path="/*" element={<Welcome />} />
+      <Route exact path="/home" element={<Home />} />
       <Route path="/articles/*" element={<SingleArticle />} />
-      <Route path="/comment/*" element={<Comment />} />
+      <Route exact path="/comment/*" element={<Comment />} />
+      <Route path="/home/*" element={<ErrorPage />} />
+      
      </Routes>
      </LoggedInUserContext.Provider>
     </div>
