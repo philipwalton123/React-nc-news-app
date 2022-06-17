@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 async function getAllArticles() {
-    return axios.get('https://nc-news-phil-w.herokuapp.com/api/articles')
+    return axios.get('https://nc-news-phil-w.herokuapp.com/api/articles?limit=50')
+    .then(({data:{articles}}) => articles)
 }
 
 async function get8Articles() {

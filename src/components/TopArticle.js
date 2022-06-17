@@ -30,11 +30,11 @@ export default function TopArticle() {
         <Link to={articleLink}>
             <h2>Latest Article</h2>
             <h2>{latestArticle.title}</h2>
-        </Link>
             {
                 window.innerWidth < 600 ? null 
                 : <p>{latestArticle.body} ...</p>
             }
+        </Link>
         </>
         }
     </section>
