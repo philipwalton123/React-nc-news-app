@@ -111,6 +111,10 @@ async function postNewArticle(body) {
     return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles/`, body)
 }
 
+async function deleteArticleById(article_id) {
+    return axios.delete(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`)
+}
+
 export {
     getAllArticles, 
     getAllTopics, 
@@ -130,5 +134,6 @@ export {
     get8Articles,
     getArticlesByTopicSortedPage,
     getLatestArticle,
-    postNewArticle
+    postNewArticle,
+    deleteArticleById
 }

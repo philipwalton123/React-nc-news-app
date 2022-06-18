@@ -1,6 +1,8 @@
 
 import { useContext, useEffect, useState } from 'react'
-import { decrementVotes, deleteUsersVoteOnArticle, getAllVotes, getUserByUsername, incrementVotes, postUsersVoteOnArticle } from "../api-calls/apiCalls"
+import { useNavigate } from 'react-router-dom'
+import { decrementVotes, deleteArticleById, deleteUsersVoteOnArticle, getAllVotes, getUserByUsername, incrementVotes, postUsersVoteOnArticle } from "../api-calls/apiCalls"
+import { LocationContext } from '../contexts/Location'
 import { LoggedInUserContext } from '../contexts/LoggedInUser'
 import colourChooser from "../utils/colour-chooser"
 
@@ -14,6 +16,8 @@ export default function ArticleSection({article}) {
     const [isLoading, setIsLoading] = useState(true)
     const [votesShowing, setVotesShowing] = useState(null)
     const [articleAuthor, setArticleAuthor]= useState({})
+    const {setLocation} = useContext(LocationContext)
+    const navigate = useNavigate()
 
     useEffect(()=>{
             getAllVotes()
@@ -50,6 +54,17 @@ export default function ArticleSection({article}) {
                 }
             }
     }
+
+    function handleDelete() {
+        deleteArticleById(article.article_id)
+        .then(()=> {
+            console.log('going home')
+            navigate('/home')
+            setLocation('home')
+        })
+    }
+
+    console.log(article)
     
     return <section className="article-section">
         <h1 className="article-title">{article.title}</h1>
@@ -57,6 +72,9 @@ export default function ArticleSection({article}) {
             <div className="article-image" style={background}>
                 <h2>topic: {article.topic}</h2>
                 <h3>Upvotes: {votesShowing}</h3>
+                {
+                    loggedInUser.username === article.author ? <button className='action-button' id ='flip-button' onClick={handleDelete}>Delete your article</button> : null
+                }
             </div>
             <div className="article-text">
                 <h3>by {articleAuthor.name}</h3>
