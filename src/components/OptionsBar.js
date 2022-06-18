@@ -24,7 +24,8 @@ export default function OptionsBar({setArticlesShowing}) {
 
     function handleSort(event) {
         setOrderChoice(event.target.value)
-        getArticlesByTopicSorted(topicChoice, event.target.value, orderFlip)
+        event.target.value === 'author' || event.target.value === 'title' ? setOrderFlip(true) : setOrderFlip(false)
+        getArticlesByTopicSorted(topicChoice, event.target.value, event.target.value === 'created_at' ? orderFlip : !orderFlip)
         .then((articles) => {
             setArticlesShowing(articles)
         })
@@ -71,8 +72,9 @@ export default function OptionsBar({setArticlesShowing}) {
                 <option value='comment_count'>Sort by comments</option>
                 <option value='votes'>Sort by votes</option>
                 <option value='author'>Sort by author</option>
+                <option value='title'>Sort by title</option>
             </select>
-            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleFlip}>flip!</button>
+            <button className='action-button' id="flip-button" value={orderFlip} onClick={handleFlip}>{orderFlip? 'DESC' : 'ASC'}</button>
             {page !== 1 ? 
             <button className='action-button' id="flip-button" value={orderFlip} onClick={handlePrevious}>Previous</button> 
             : null }

@@ -167,17 +167,18 @@ form {
 }
 
 .viewport {
-  margin-top: 40px;
+  margin-top: 3em;
   display: block;
 }
 
 .top-article {
-  height: 80px;
+  height: 6%;
   width: 98%;
   margin: auto;
   text-align: center;
   background-color: grey;
-  font-size: 0.8em
+  font-size: 0.8em;
+  border-radius: 10px;
 }
 
 .viewport ul {
@@ -188,6 +189,17 @@ form {
 .article-card {
   list-style: none;
   margin: 4px;
+  border-radius: 10px;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+.article-card h2 {
+  padding: 0.3em;
+}
+
+.article-card p {
+  padding: 0.3em;
 }
 
 a {
@@ -229,7 +241,8 @@ a h1 {
   border: outset rgb(185, 183, 183);
   margin-top: 0;
   margin-right: 0;
-  height: 98%
+  height: 98%;
+  margin-bottom: 0;
 }
 
 .action-button:active {
@@ -281,6 +294,7 @@ a h1 {
 
 .header .author-pic {
   width: 2.5rem;
+  height: 2.5rem;
   
 }
 
@@ -313,7 +327,7 @@ a h1 {
   transition: height 0.5s ease-in-out;
   width: 100%;
   margin: auto;
-  text-align: center;
+  text-align: left;
 }
 
 .comments-wrapper:active {
@@ -328,15 +342,25 @@ a h1 {
 
 .comments-wrapper--open {
   filter: drop-shadow(16px 16px 20px red);
-  height: 25%;
+  height: 30%;
+  border-radius: 2pc;
+  transition: height 0.5s ease-in-out;
+  
+}
+
+.comments-wrapper--open:focus {
+  height: 3em;
   border-radius: 2pc;
   transition: height 0.5s ease-in-out;
 }
 
-.comments-wrapper--open:active {
-  height: 3em;
-  border-radius: 2pc;
-  transition: height 0.5s ease-in-out;
+.comments-bottom {
+  display: flex;
+  width: 100%;
+}
+
+.comments-bottom .action-button {
+  text-align: center;
 }
 
 .comments-bar{

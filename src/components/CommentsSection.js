@@ -32,7 +32,8 @@ export default function CommentsSection({splat, article_id}) {
         navigate(`/comment/${article_id}`)
     }
 
-    function handleClickForMore() {
+    function handleClickForMore(event) {
+        event.preventDefault()
        setCommentsLimit((current) => current + 10)
     }
 
@@ -45,8 +46,19 @@ export default function CommentsSection({splat, article_id}) {
        })
     }
 
+    const commentsBar = document.getElementById('comments-bar')
+
+    function handleHideComments(event) {
+        event.preventDefault()
+        commentsBar.scrollTo({
+            top:0,
+            behaviour: 'smooth'
+        })
+        setCommentsHidden(true)
+    }
+
     return <section className={commentsHidden ? 'comments-wrapper' : 'comments-wrapper--open'}>
-        <section className="comments-bar">
+        <section className="comments-bar" id="comments-bar">
             <div className="comments-bar-top">
                <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments {commentsHidden ? 'V' : '^'}</button> 
                <button className="action-button" id='write-a-comment' onClick={handleCommentClick}>+</button>
@@ -71,7 +83,11 @@ export default function CommentsSection({splat, article_id}) {
                   
                 }
             </ul>
+            <section className='comments-bottom'>
             <button className='action-button' id='next-page-button' onClick={handleClickForMore}>See More</button>
+            <button className='action-button' id='next-page-button' onClick={handleHideComments}>Hide</button>
+            </section>
+           
         </section>
     </section>
 }

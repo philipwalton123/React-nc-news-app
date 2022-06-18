@@ -6,7 +6,7 @@ import { LoggedInUserContext } from '../contexts/LoggedInUser'
 
 export default function NavBar() {
 
-    const {loggedInUser} = useContext(LoggedInUserContext)
+    const {loggedInUser, setLoggedInUser} = useContext(LoggedInUserContext)
     const {location, setLocation} = useContext(LocationContext)
 
     return <section className="nav-bar">
@@ -15,7 +15,7 @@ export default function NavBar() {
             <button className="action-button">Sign-In</button>
         </Link> : 
         <Link to="/welcome">
-            <button className="action-button">Sign-Out</button>
+            <button className="action-button" onClick={()=>{setLoggedInUser('guest')}}>Sign-Out</button>
         </Link>
         }
         <div className="button-spacer"></div>
