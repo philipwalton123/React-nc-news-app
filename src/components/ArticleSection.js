@@ -17,6 +17,7 @@ export default function ArticleSection({article}) {
     const [votesShowing, setVotesShowing] = useState(null)
     const [articleAuthor, setArticleAuthor]= useState({})
     const {setLocation} = useContext(LocationContext)
+    const [deleteRequested, setDeleteRequested] = useState(false)
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -56,15 +57,21 @@ export default function ArticleSection({article}) {
     }
 
     function handleDelete() {
+        setLocation('home')
         deleteArticleById(article.article_id)
         .then(()=> {
-            console.log('going home')
             navigate('/home')
-            setLocation('home')
+            
+        })
+        .catch(err => {
+            navigate('/home')
         })
     }
 
     console.log(article)
+
+    const deleteStyle = {'margin-top': '1em'}
+    const cancelStyle = {'margin-top': '4px'}
     
     return <section className="article-section">
         <h1 className="article-title">{article.title}</h1>
@@ -73,7 +80,13 @@ export default function ArticleSection({article}) {
                 <h2>topic: {article.topic}</h2>
                 <h3>Upvotes: {votesShowing}</h3>
                 {
-                    loggedInUser.username === article.author ? <button className='action-button' id ='flip-button' onClick={handleDelete}>Delete your article</button> : null
+                    loggedInUser.username === article.author ? 
+                    deleteRequested ?   <>
+                                            <button className='action-button' id ='flip-button' style={deleteStyle} onClick={handleDelete}>Confirm?</button>
+                                            <button className='action-button' id='flip-button' style={cancelStyle} onClick={()=>{setDeleteRequested(false)}}>Cancel</button>
+                                        </> 
+                                    : <button className='action-button' id ='flip-button' style={deleteStyle} onClick={()=>{setDeleteRequested(true)}}>Delete your article?</button> 
+                                    : null
                 }
             </div>
             <div className="article-text">

@@ -15,7 +15,7 @@ export default function PostArticle() {
     const {loggedInUser} = useContext(LoggedInUserContext)
     const [topicChoice, setTopicChoice] = useState('coding')
     const [failedSubmit, setFailedSubmit] = useState(false)
-    const {setLocationContext} = useContext(LocationContext)
+    const {setLocation} = useContext(LocationContext)
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -61,7 +61,7 @@ export default function PostArticle() {
                 setSubmitted(true)
                 setCurrentText({title: '', body: ''})
                 navigate('/home')
-                setLocationContext('home')
+                setLocation('home')
             })
         }
     }
