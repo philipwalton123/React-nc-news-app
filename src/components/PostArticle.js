@@ -75,7 +75,7 @@ export default function PostArticle() {
     }
 
     const selectStyle = {width: '30%',
-                            'margin-left': 0}
+                            'marginLeft': 0}
 
     return <>
         <Header />

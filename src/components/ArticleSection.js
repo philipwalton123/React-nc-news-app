@@ -1,7 +1,7 @@
 
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { decrementVotes, deleteArticleById, deleteUsersVoteOnArticle, getAllVotes, getUserByUsername, incrementVotes, postUsersVoteOnArticle } from "../api-calls/apiCalls"
+import { decrementVotes, deleteArticleById, strikeUsersVoteOnArticle, getAllVotes, getUserByUsername, incrementVotes, recordUsersVoteOnArticle } from "../api-calls/apiCalls"
 import { LocationContext } from '../contexts/Location'
 import { LoggedInUserContext } from '../contexts/LoggedInUser'
 import colourChooser from "../utils/colour-chooser"
@@ -33,25 +33,22 @@ export default function ArticleSection({article}) {
                 setArticleAuthor(user)
             })
         })
-        
-        
     },[article, loggedInUser.username])
-
 
     function handleVoteClick() {
             if (!voted){
                 setVoted(!voted)
                 setVotesShowing(votesShowing + 1)
-                incrementVotes(article.article_id)
                 if (loggedInUser.username !== 'guest') {
-                    postUsersVoteOnArticle(article.article_id, loggedInUser.username)
+                    incrementVotes(article.article_id)
+                    recordUsersVoteOnArticle(article.article_id, loggedInUser.username)
                 }
             } else {
                 setVoted(!voted)
                 setVotesShowing(votesShowing - 1)
-                decrementVotes(article.article_id)
                 if (loggedInUser.username !== 'guest') {
-                    deleteUsersVoteOnArticle(article.article_id, loggedInUser.username)
+                    decrementVotes(article.article_id)
+                    strikeUsersVoteOnArticle(article.article_id, loggedInUser.username)
                 }
             }
     }
@@ -67,8 +64,6 @@ export default function ArticleSection({article}) {
             navigate('/home')
         })
     }
-
-    console.log(article)
 
     const deleteStyle = {'margin-top': '1em'}
     const cancelStyle = {'margin-top': '4px'}

@@ -520,6 +520,7 @@ textarea {
 
 #title-field {
   height: 4em;
+  width: 100%;
 }
 
 #purple {
@@ -528,6 +529,21 @@ textarea {
 
 #write-article {
   margin-top: 5%;
+  padding: 0
+}
+
+#write-new-topic form {
+  height: 50%;
+}
+
+#slug-field {
+  margin: 4px;
+  height: 4em;
+}
+
+#description-field {
+  margin: 4px;
+  height: 8em;
 }
 
 /* Desktop */

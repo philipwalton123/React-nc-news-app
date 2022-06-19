@@ -67,13 +67,13 @@ async function getAllVotes() {
     })
 }
 
-async function postUsersVoteOnArticle(article, voter) {
+async function recordUsersVoteOnArticle(article, voter) {
     return axios.post('https://nc-news-phil-w.herokuapp.com/api/votes', {article: article, voter: voter})
     .then(response => {
     })
 }
 
-async function deleteUsersVoteOnArticle(article, voter) {
+async function strikeUsersVoteOnArticle(article, voter) {
     return axios.delete('https://nc-news-phil-w.herokuapp.com/api/votes', {data: {article: article, voter: voter}})
     .then(response => {
     })
@@ -108,8 +108,14 @@ async function deleteCommentById(comment_id) {
 }
 
 async function postNewArticle(body) {
-    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles/`, body)
+    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/articles`, body)
 }
+
+async function postNewTopic(body) {
+    return axios.post(`https://nc-news-phil-w.herokuapp.com/api/topics`, body)
+}
+
+
 
 async function deleteArticleById(article_id) {
     return axios.delete(`https://nc-news-phil-w.herokuapp.com/api/articles/${article_id}`)
@@ -123,9 +129,9 @@ export {
     incrementVotes, 
     getAllUsers, 
     getAllVotes, 
-    postUsersVoteOnArticle,
+    recordUsersVoteOnArticle,
     decrementVotes,
-    deleteUsersVoteOnArticle,
+    strikeUsersVoteOnArticle,
     getUserByUsername,
     getCommentsByArticleId,
     postCommentOnArticle,
@@ -135,5 +141,6 @@ export {
     getArticlesByTopicSortedPage,
     getLatestArticle,
     postNewArticle,
-    deleteArticleById
+    deleteArticleById,
+    postNewTopic
 }

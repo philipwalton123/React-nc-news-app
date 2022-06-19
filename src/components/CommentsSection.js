@@ -60,7 +60,7 @@ export default function CommentsSection({splat, article_id}) {
     return <section className={commentsHidden ? 'comments-wrapper' : 'comments-wrapper--open'}>
         <section className="comments-bar" id="comments-bar">
             <div className="comments-bar-top">
-               <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments {commentsHidden ? 'V' : '^'}</button> 
+               <button className="action-button" id='reveal-comments' onClick={handleRevealClick}>Comments {commentsHidden ? '...' : '^'}</button> 
                <button className="action-button" id='write-a-comment' onClick={handleCommentClick}>+</button>
             </div>
             
@@ -68,19 +68,18 @@ export default function CommentsSection({splat, article_id}) {
                 {
                     theseComments.map(comment => {
                         return (
-                            <div className="comment-card">
+                            <li className="comment-card" key={comment.comment_id}>
                                 {comment.author === loggedInUser.username ? <button className='action-button' id="flip-button" onClick={()=>{handleClickDelete(comment.comment_id)}}>Delete</button> : null}
-                                <div key={comment.comment_id} className="comment-text">
+                                <div className="comment-text">
                                     {deleting ? <p>deleting...</p> : <>
                                     <p>{comment.body}</p>
                                     <p>{comment.author}</p>
                                     </>}
                                     
                                 </div>
-                            </div>
+                            </li>
                             )
                     })
-                  
                 }
             </ul>
             <section className='comments-bottom'>

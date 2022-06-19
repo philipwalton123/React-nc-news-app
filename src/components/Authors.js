@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllArticles, getAllUsers } from "../api-calls/apiCalls";
+import { LocationContext } from "../contexts/Location";
 import Header from "./Header";
 import NavBar from "./NavBar";
 
@@ -9,8 +10,10 @@ export default function Authors() {
     const [allArticles, setAllArticles] = useState([])
     const [, setIsLoading] = useState(true)
     const [authors, setAuthors] = useState([])
+    const {setLocation} = useContext(LocationContext)
 
     useEffect(()=> {
+        setLocation('authors')
         getAllUsers()
         .then(users => {
             setAllUsers(users)
@@ -22,7 +25,7 @@ export default function Authors() {
                 setIsLoading(false)
             })
         })
-    }, [])
+    }, [setLocation])
 
     allUsers.forEach(user => {
         if (allArticles.some(article => {
@@ -42,10 +45,10 @@ export default function Authors() {
             authors.map(author => {
                 if (author.username !== 'guest') {
                     return (
-                        <section className="author-card">
+                        <li key={author.username} className="author-card">
                             <img key={author.userName} className="author-pic" src={author.avatar_url} alt="auth"></img>
                             <h1 className="author-name">{author.username}</h1>
-                        </section>
+                        </li>
                     )
                 } else return null
             })
