@@ -320,10 +320,6 @@ a h1 {
   border: solid red
 }
 
-.logged-in-user {
-  
-}
-
 .comments-wrapper {
   height: 3em;
   transition: height 0.5s ease-in-out;
@@ -505,7 +501,7 @@ textarea {
 }
 
 .post-article-wrapper {
-  background-color: grey;
+  
   width: 90%;
   margin: auto;
   margin-top: 7em;
@@ -774,16 +770,21 @@ textarea {
   
   .sort-by-menu {
     background-color: rgb(222, 228, 51);
-    border: none;;
+    border: none;
     width: 95%;
     margin: auto;
+    justify-content: flex-start;
   }
+
+
+
 
   .article-section {
     margin: 4px;
     width: 75%;
     margin: auto;
     margin-top: 15%
+
   }
 
   .article-window {

@@ -15,6 +15,8 @@ export default function PostArticle() {
     const {loggedInUser} = useContext(LoggedInUserContext)
     const [topicChoice, setTopicChoice] = useState('coding')
     const [failedSubmit, setFailedSubmit] = useState(false)
+    const [validTitle, setValidTitle] = useState('na')
+    const [validBody, setValidBody] = useState('true')
     const {setLocation} = useContext(LocationContext)
     const navigate = useNavigate()
 
@@ -45,7 +47,7 @@ export default function PostArticle() {
         }
     }
 
-    function handleCommentSubmit(event) {
+    function handleArticleSubmit(event) {
         event.preventDefault()
         const title = event.target[0].value
         const body = event.target[1].value
@@ -54,24 +56,33 @@ export default function PostArticle() {
         const article = {title, body, author, topic}
         if (author === 'guest') {
             setFailedSubmit(true)
+        } else if (title === '' || body === '') {
+            if (title === '') {
+                setValidTitle(false)
+            } else setValidTitle(true)
+            if (body === '') {
+                setValidBody(false)
+            } else setValidBody(true)
         } else {
-            
+            setLocation('home')
             postNewArticle(article).then(()=> {
                 setFailedSubmit(false)
                 setSubmitted(true)
                 setCurrentText({title: '', body: ''})
                 navigate('/home')
-                setLocation('home')
             })
         }
     }
+
+    const selectStyle = {width: '30%',
+                            'margin-left': 0}
 
     return <>
         <Header />
         <NavBar />
             <section className="post-article-wrapper">
-                <section className='options-bar' onChange={handleTopicChoose}>
-                <select>
+                <section className="options-bar" onChange={handleTopicChoose}>
+                <select className='sort-by-menu' style={selectStyle}>
                 {topics.map(topic => {
                         return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                     })}
@@ -83,11 +94,13 @@ export default function PostArticle() {
             </section>
         </section>
         <section id="write-article" className="write-comment-wrapper">What would you like to write?
-            <form className='comment-form' onSubmit={handleCommentSubmit}>
+            <form className='comment-form' onSubmit={handleArticleSubmit}>
                 <textarea id='title-field' type='text' className="comment-field" value={currentText.title} onChange={updateText} placeholder="Title"></textarea>
                 <textarea id='body-field' type='text' className="comment-field" value={currentText.body} onChange={updateText} placeholder="Body"></textarea>
                 <button type='submit' className='action-button'>Submit</button>
             </form>
+            {!validTitle ? <p>A Title must be provided</p> : null}
+            {!validBody? <p>An article body must be provided</p> : null}
             {failedSubmit ? <p>You must be <Link id="purple" to='/'>logged in</Link> to post an article.</p> : null}
             {submitted ? <p>Success!</p> : null}
             {isError ? <p>You must be <Link to='/'>logged in</Link> to submit a comment. Comments cannot be empty.</p> : null}
