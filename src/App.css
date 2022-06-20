@@ -60,6 +60,10 @@ form {
   top: 30%
 }
 
+.login-wrapper p {
+  text-align: center;
+}
+
 .input-area {
   width: 100%;
   align-items: center;
