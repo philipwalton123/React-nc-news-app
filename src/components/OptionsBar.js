@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllTopics, getArticlesByTopic, getArticlesByTopicSorted, getArticlesByTopicSortedPage } from "../api-calls/apiCalls";
 
-export default function OptionsBar({setArticlesShowing}) {
+export default function OptionsBar({allArticles, setArticlesShowing}) {
     const [topics, setTopics] = useState([])
     const [topicChoice, setTopicChoice] = useState('')
     const [orderChoice, setOrderChoice] = useState('created_at')
@@ -63,7 +63,9 @@ export default function OptionsBar({setArticlesShowing}) {
     return <section className="options-bar">
             <select id='category-chooser' onChange={handleTopicChoose} name="sort_by" className="sort-by-menu sort-by-menu--animated">
                 <option value="">All Articles</option>
-                {topics.map(topic => {
+                {topics.filter(topic => {
+                    return allArticles.some(article=> article.topic === topic.slug)
+                }).map(topic => {
                     return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                 })}
             </select>

@@ -9,19 +9,21 @@ export default function Articles() {
     
     const [articlesShowing, setArticlesShowing] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [allArticles, setAllArticles] = useState([])
     const [query, setQuery] = useState("")
 
     useEffect(()=> {
         get8Articles()
         .then(({data: {articles}}) => {
             setArticlesShowing(articles)
+            setAllArticles(articles)
             setIsLoading(false)
         })
     }, [])
     
     return isLoading ? <h3>... loading</h3>
     : <section className="articles-viewer">
-    <OptionsBar setArticlesShowing={setArticlesShowing}/>
+    <OptionsBar allArticles={allArticles} setArticlesShowing={setArticlesShowing}/>
     <ul>
         {articlesShowing.map(article => {
             const background = {"backgroundColor": `${colourChooser(article.article_id)}`}
