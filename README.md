@@ -4,7 +4,7 @@ This project was the 'part 2' to the previous NC News project.
 
 Having previously created the RESTful back-end using express.js, this project used React.js to create the front end.
 
-##Features
+## Features
 
 -Responsive styling to differentiate mobile from desktop views.
 -A login page that accepts only existing users
